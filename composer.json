@@ -1,0 +1,42 @@
+{
+    "name": "dmitrym-web/http-client",
+    "description": "",
+    "keywords": [
+        "request",
+        "response",
+        "psr-3",
+        "log",
+        "psr-7",
+        "http"
+    ],
+    "version": "1.0.0",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "FacadeClient\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "FacadeClient\\Tests\\": "tests/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Dmitry Maksimovich",
+            "email": "nvrsk.yii2@gmail.com",
+            "homepage": "https://github.com/dmitrym-web/http-client"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "php": "^8.2",
+        "guzzlehttp/guzzle": "^7.0",
+        "psr/http-message": "^2.0",
+        "psr/log": "^3.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^11.2"
+    }
+}
