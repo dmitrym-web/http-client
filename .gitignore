@@ -1,14 +1,9 @@
-# IDE
+composer.lock
 /.idea
-# Docker
 Makefile
 /.docker
-#
 /public
-#
 /tests/
-#
 /vendor/
-#
 phpunit.xml
 /.phpunit.cache
