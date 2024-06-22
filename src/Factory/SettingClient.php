@@ -6,11 +6,11 @@ namespace FacadeClient\Factory;
 
 readonly class SettingClient
 {
-    public function __construct(private ?string $baseUri = '')
+    public function __construct(private string $baseUri)
     {
     }
 
-    public function getBaseUri(): ?string
+    public function getBaseUri(): string
     {
         return $this->baseUri;
     }

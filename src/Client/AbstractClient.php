@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace FacadeClient\Client;
 
+use FacadeClient\Constant\FacadeConstant;
 use FacadeClient\Exception\FacadeRequestException;
 use FacadeClient\Factory\FacadeClientFactory;
 use FacadeClient\Factory\SettingClient;
@@ -16,7 +17,7 @@ abstract class AbstractClient
 {
     private Client $client;
 
-    public function __construct(public SettingClient $setting)
+    public function __construct(public SettingClient $setting, public ?string $bearerToken = null)
     {
         $this->client = (new FacadeClientFactory())->create($this->setting);
     }
@@ -26,6 +27,16 @@ abstract class AbstractClient
      */
     public function send(FacadeRequestInterface $message, $options = []): ResponseInterface
     {
+        if (FacadeConstant::METHOD_GET === $message->getMethod()) {
+            $options['query'] = $message->getData();
+        } else {
+            $options['json'] = $message->getData();
+        }
+
+        if ($this->bearerToken) {
+            $options['headers']['Authorization'] = 'Bearer ' . $this->bearerToken;
+        }
+
         return $this->doRequest($message, $options);
     }
 
@@ -42,7 +53,7 @@ abstract class AbstractClient
                 $options
             );
         } catch (GuzzleException $e) {
-            throw new FacadeRequestException(message:  $e->getMessage(), code: $e->getCode());
+            throw new FacadeRequestException(message: $e->getMessage(), code: $e->getCode());
         }
     }
 }
