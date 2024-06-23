@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace FacadeClient\Factory;
 
-use FacadeClient\Client\Client;
+use GuzzleHttp\Client;
 
-interface FacadeClientFactoryInterface
+interface FacadeGuzzleClientFactoryInterface
 {
     public function create(SettingClient $setting): Client;
 }
