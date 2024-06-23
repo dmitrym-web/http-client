@@ -6,7 +6,7 @@ namespace FacadeClient\Client;
 
 use FacadeClient\Constant\FacadeConstant;
 use FacadeClient\Exception\FacadeRequestException;
-use FacadeClient\Factory\FacadeClientFactory;
+use FacadeClient\Factory\FacadeGuzzleClientFactory;
 use FacadeClient\Factory\SettingClient;
 use FacadeClient\Request\FacadeRequestInterface;
 use GuzzleHttp\Client;
@@ -19,7 +19,7 @@ abstract class AbstractClient
 
     public function __construct(public SettingClient $setting, public ?string $bearerToken = null)
     {
-        $this->client = (new FacadeClientFactory())->create($this->setting);
+        $this->client = (new FacadeGuzzleClientFactory())->create($this->setting);
     }
 
     /**

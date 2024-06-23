@@ -9,7 +9,7 @@
         "psr-7",
         "http"
     ],
-    "version": "v1.0.2.1",
+    "version": "v1.0.3.1",
     "type": "library",
     "license": "MIT",
     "autoload": {
