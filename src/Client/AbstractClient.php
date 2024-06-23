@@ -40,7 +40,6 @@ abstract class AbstractClient
         return $this->doRequest($message, $options);
     }
 
-
     /**
      * @throws FacadeRequestException
      */
